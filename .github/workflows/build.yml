@@ -48,16 +48,6 @@ jobs:
             type=ref,event=tag
             type=sha,format=short
 
-      - name: Make package public
-        run: |
-          sleep 10
-          code=$(curl -s -o /tmp/vis.json -w '%{http_code}' -X PATCH \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Accept: application/vnd.github+json" \
-            https://api.github.com/user/packages/container/humanizer-12b \
-            -d '{"visibility":"public"}')
-          echo "visibility PATCH -> $code"; cat /tmp/vis.json || true
-
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
