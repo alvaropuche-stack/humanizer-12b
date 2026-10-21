@@ -1,0 +1,9 @@
+.git
+.gitignore
+.github
+README.md
+deploy.sh
+build-on-vps.sh
+seed-volume.sh
+*.log
+*.gguf
